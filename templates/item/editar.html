@@ -1,1 +1,60 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Item</title>
+</head>
+<body>
+    <h1>Editar Item</h1>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        <div>
+            <label>Nome:</label><br>
+            <input type="text" name="nome" value="{{ item.nome }}" required>
+        </div>
+
+        <div>
+            <label>Descrição:</label><br>
+            <textarea name="descricao">{{ item.descricao }}</textarea>
+        </div>
+
+        <div>
+            <label>Local:</label><br>
+            <input type="text" name="local" value="{{ item.local }}" required>
+        </div>
+
+        <div>
+            <label>Data:</label><br>
+            <input type="date" name="data" value="{{ item.data_perdido.strftime('%Y-%m-%d') }}" required>
+        </div>
+
+        <div>
+            <label>Foto atual:</label><br>
+            {% if item.foto %}
+                <img src="{{ url_for('static', filename='uploads/' ~ item.foto) }}" width="100"><br>
+                <small>{{ item.foto }}</small>
+            {% else %}
+                <p>Nenhuma foto cadastrada</p>
+            {% endif %}
+        </div>
+
+        <div>
+            <label>Nova Foto (opcional):</label><br>
+            <input type="file" name="foto"><br>
+            <small>Deixe em branco para manter a foto atual</small>
+        </div>
+
+        <br>
+        <button type="submit">Salvar Alterações</button>
+    </form>
+
+    <br>
+    <div>
+        <a href="{{ url_for('item.listar') }}">Voltar para lista</a> |
+        <a href="{{ url_for('item.pendentes') }}">Ver pendentes</a> |
+        <a href="{{ url_for('item.encontrados') }}">Ver encontrados</a>
+    </div>
+</body>
+</html>
