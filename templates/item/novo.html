@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Novo Item</title>
+</head>
+<body>
+
+    <h1>Cadastrar Novo Item</h1>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        <label>Nome:</label><br>
+        <input type="text" name="nome" required><br><br>
+
+        <label>Descrição:</label><br>
+        <textarea name="descricao"></textarea><br><br>
+
+        <label>Local:</label><br>
+        <input type="text" name="local" required><br><br>
+
+        <label>Data:</label><br>
+        <input type="date" name="data" required><br><br>
+
+        <label>Status:</label><br>
+        <select name="status" required>
+            <option value="achado">Achado</option>
+            <option value="perdido">Perdido</option>
+        </select>
+        <br><br>
+
+        <label>Foto:</label><br>
+        <input type="file" name="foto"><br><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('item.listar') }}">Voltar para itens</a>
+
+</body>
+</html>
