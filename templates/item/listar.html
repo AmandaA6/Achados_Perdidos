@@ -1,47 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itens</title>
+    <title>Itens Achados e Perdidos</title>
 </head>
 <body>
-        
     <h1>Itens Achados e Perdidos</h1>
 
-    <a href="{{ url_for('item.novo') }}" class="btn btn-primary">Cadastrar Novo Item</a>
+    <div>
+        <a href="{{ url_for('item.listar') }}">Todos</a> |
+        <a href="{{ url_for('item.pendentes') }}">Pendentes</a> |
+        <a href="{{ url_for('item.encontrados') }}">Encontrados</a>
+    </div>
+
+    <br>
+    <a href="{{ url_for('item.novo') }}">Cadastrar Novo Item</a>
     <br><br>
 
     <table border="1" cellpadding="8">
-        <tr>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Local</th>
-            <th>Data</th>
-            <th>Status</th>
-            <th>Foto</th>
-        </tr>
-
-        {% for i in itens %}
-        <tr>
-            <td>{{ i.nome }}</td>
-            <td>{{ i.descricao }}</td>
-            <td>{{ i.local }}</td>
-            <td>{{ i.data }}</td>
-            <td>{{ i.status }}</td>
-            <td>
-                {% if i.foto %}
-                    <img src="{{ url_for('static', filename='uploads/' ~ i.foto) }}" width="60">
-                {% else %}
-                    Não enviada
-                {% endif %}
-            </td>
-            <td>
-                <a href="{{ url_for('item.excluir', id=i.id) }}" onclick="return confirm('Deseja excluir?');">Excluir</a>
-            </td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Local</th>
+                <th>Data Perdido</th>
+                <th>Status</th>
+                <th>Foto</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in itens %}
+            <tr>
+                <td>{{ i.nome }}</td>
+                <td>{{ i.descricao or '-' }}</td>
+                <td>{{ i.local }}</td>
+                <td>{{ i.data_perdido }}</td>
+                <td>
+                    {% if i.status == 'pendente' %}
+                        <span style="color: orange;">Pendente</span>
+                    {% else %}
+                        <span style="color: green;">Encontrado</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if i.foto %}
+                        <img src="{{ url_for('static', filename='uploads/' ~ i.foto) }}" width="60">
+                    {% else %}
+                        Sem foto
+                    {% endif %}
+                </td>
+                <td>
+                    {% if i.status == 'pendente' %}
+                        <a href="{{ url_for('item.marcar_encontrado', id=i.id) }}">Encontrado</a> |
+                    {% else %}
+                        <strong>Encontrado por:</strong><br>
+                        {{ i.nome_encontrou }}<br>
+                        {{ i.data_encontrado }}
+                    {% endif %}
+                    <a href="{{ url_for('item.editar', id=i.id) }}">Editar</a> |
+                    <a href="{{ url_for('item.excluir', id=i.id) }}" onclick="return confirm('Tem certeza?');">Excluir</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7" style="text-align: center;">Nenhum item encontrado</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
-
 </body>
 </html>
