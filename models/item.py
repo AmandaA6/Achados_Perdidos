@@ -13,3 +13,6 @@ class Item(Base):
     data: Mapped[Date] = mapped_column(Date, nullable=False) 
     status: Mapped[str] = mapped_column(String(20), nullable=False)
     foto: Mapped[str] = mapped_column(String(200), nullable=True)
+    nome_encontrou: Mapped[str] = mapped_column(String(100), nullable=True)
+    contato_encontrou: Mapped[str] = mapped_column(String(100), nullable=True)
+    data_encontrado: Mapped[Date] = mapped_column(Date, nullable=True)
