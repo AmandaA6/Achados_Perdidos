@@ -14,6 +14,9 @@
         {% if 'usuario_id' not in session %}
             <a href="{{ url_for('usuario.cadastro') }}">Criar Conta</a>
             <a href="{{ url_for('usuario.login') }}">Login</a>
+        {% else %}
+            <span>Olá, {{ session['usuario_nome'] }}</span>
+            <a href="{{ url_for('item.novo') }}">Cadastrar Item</a>
         {% endif %}
     </nav>
 
@@ -22,3 +25,4 @@
     </div>
 </body>
 </html>
+
