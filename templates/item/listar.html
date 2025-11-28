@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itens</title>
+</head>
+<body>
+        
+    <h1>Itens Achados e Perdidos</h1>
+
+    <a href="{{ url_for('item.novo') }}" class="btn btn-primary">Cadastrar Novo Item</a>
+    <br><br>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Local</th>
+            <th>Data</th>
+            <th>Status</th>
+            <th>Foto</th>
+        </tr>
+
+        {% for i in itens %}
+        <tr>
+            <td>{{ i.nome }}</td>
+            <td>{{ i.descricao }}</td>
+            <td>{{ i.local }}</td>
+            <td>{{ i.data }}</td>
+            <td>{{ i.status }}</td>
+            <td>
+                {% if i.foto %}
+                    <img src="{{ url_for('static', filename='uploads/' ~ i.foto) }}" width="60">
+                {% else %}
+                    Não enviada
+                {% endif %}
+            </td>
+            <td>
+                <a href="{{ url_for('item.excluir', id=i.id) }}" onclick="return confirm('Deseja excluir?');">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
