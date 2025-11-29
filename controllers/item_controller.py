@@ -7,7 +7,7 @@ UPLOAD_FOLDER = "static/uploads"
 
 item_bp = Blueprint("item", __name__, url_prefix="/itens")
 
-# Listar itens
+# LISTAR TODOS OS ITENS
 @item_bp.route("/")
 def listar():
     db = SessionLocal()
@@ -15,7 +15,7 @@ def listar():
     db.close()
     return render_template("item/listar.html", itens=itens)
 
-# Listar itens pendentes
+# LISTAR PENDENTES
 @item_bp.route("/pendentes")
 def pendentes():
     db = SessionLocal()
@@ -23,7 +23,7 @@ def pendentes():
     db.close()
     return render_template("item/listar.html", itens=itens)
 
-# Listar itens encontrados
+# LISTAR ENCONTRADOS
 @item_bp.route("/encontrados")
 def encontrados():
     db = SessionLocal()
@@ -31,7 +31,7 @@ def encontrados():
     db.close()
     return render_template("item/listar.html", itens=itens)
 
-# Cadastrar novo item
+# CADASTRAR ITEM
 @item_bp.route("/novo", methods=["GET", "POST"])
 def novo():
     db = SessionLocal()
@@ -41,7 +41,7 @@ def novo():
         descricao = request.form.get("descricao")
         local = request.form.get("local")
         data_str = request.form.get("data")
-        
+
         status = "pendente"
 
         data_obj = datetime.datetime.strptime(data_str, "%Y-%m-%d").date()
@@ -57,7 +57,7 @@ def novo():
             nome=nome,
             descricao=descricao,
             local=local,
-            data_perdido=data_obj,
+            data=data_obj,    
             status=status,
             foto=filename
         )
@@ -71,7 +71,7 @@ def novo():
     db.close()
     return render_template("item/novo.html")
 
-# Marcar como encontrado
+# MARCAR COMO ENCONTRADO
 @item_bp.route("/marcar_encontrado/<int:id>", methods=["GET", "POST"])
 def marcar_encontrado(id):
     db = SessionLocal()
@@ -96,7 +96,7 @@ def marcar_encontrado(id):
     db.close()
     return render_template("item/marcar_encontrado.html", item=item)
 
-# Editar item
+# EDITAR ITEM
 @item_bp.route("/editar/<int:id>", methods=["GET", "POST"])
 def editar(id):
     db = SessionLocal()
@@ -111,8 +111,9 @@ def editar(id):
         item.nome = request.form.get("nome")
         item.descricao = request.form.get("descricao")
         item.local = request.form.get("local")
+
         data_str = request.form.get("data")
-        item.data_perdido = datetime.datetime.strptime(data_str, "%Y-%m-%d").date()
+        item.data = datetime.datetime.strptime(data_str, "%Y-%m-%d").date()
 
         arquivo = request.files["foto"]
         if arquivo and arquivo.filename != "":
@@ -132,7 +133,7 @@ def editar(id):
     db.close()
     return render_template("item/editar.html", item=item)
 
-# Excluir item
+# EXCLUIR ITEM
 @item_bp.route("/excluir/<int:id>")
 def excluir(id):
     db = SessionLocal()
