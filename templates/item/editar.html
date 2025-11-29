@@ -1,36 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Item</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block titulo %}Editar Item{% endblock %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{{ url_for('static', filename='item.css') }}">
+{% endblock %}
+
+{% block conteudo %}
+<div class="form-container">
     <h1>Editar Item</h1>
 
     <form action="" method="POST" enctype="multipart/form-data">
         <div>
-            <label>Nome:</label><br>
+            <label>Nome:</label>
             <input type="text" name="nome" value="{{ item.nome }}" required>
         </div>
 
         <div>
-            <label>Descrição:</label><br>
+            <label>Descrição:</label>
             <textarea name="descricao">{{ item.descricao }}</textarea>
         </div>
 
         <div>
-            <label>Local:</label><br>
+            <label>Local:</label>
             <input type="text" name="local" value="{{ item.local }}" required>
         </div>
 
         <div>
-            <label>Data:</label><br>
-            <input type="date" name="data" value="{{ item.data_perdido.strftime('%Y-%m-%d') }}" required>
+            <label>Data:</label>
+            <input type="date" name="data" value="{{ item.data.strftime('%Y-%m-%d') }}" required>
         </div>
 
         <div>
-            <label>Foto atual:</label><br>
+            <label>Foto atual:</label>
             {% if item.foto %}
                 <img src="{{ url_for('static', filename='uploads/' ~ item.foto) }}" width="100"><br>
                 <small>{{ item.foto }}</small>
@@ -40,12 +42,11 @@
         </div>
 
         <div>
-            <label>Nova Foto (opcional):</label><br>
-            <input type="file" name="foto"><br>
+            <label>Nova Foto (opcional):</label>
+            <input type="file" name="foto">
             <small>Deixe em branco para manter a foto atual</small>
         </div>
 
-        <br>
         <button type="submit">Salvar Alterações</button>
     </form>
 
@@ -55,5 +56,5 @@
         <a href="{{ url_for('item.pendentes') }}">Ver pendentes</a> |
         <a href="{{ url_for('item.encontrados') }}">Ver encontrados</a>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
