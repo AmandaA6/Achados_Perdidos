@@ -1,0 +1,65 @@
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.info-item p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.form-encontrado {
+    margin-top: 20px;
+}
+
+.form-grupo {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.btn-confirmar {
+    width: 100%;
+    padding: 12px;
+    background: #28a745;
+    border: none;
+    font-size: 16px;
+    color: white;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.btn-confirmar:hover {
+    background: #218838;
+}
+
+.btn-cancelar {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #555;
+    text-decoration: none;
+}
+
+.btn-cancelar:hover {
+    text-decoration: underline;
+}

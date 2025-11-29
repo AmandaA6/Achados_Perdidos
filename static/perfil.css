@@ -1,0 +1,55 @@
+.perfil-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.perfil-container h1 {
+    text-align: center;
+    color: #4a3f8c;
+    margin-bottom: 25px;
+}
+
+.perfil-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info p {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.btn-editar,
+.btn-senha {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn-editar {
+    background: #4a3f8c;
+    color: white;
+}
+
+.btn-editar:hover {
+    background: #372f68;
+}
+
+.btn-senha {
+    background: #dcd8f0;
+    color: #4a3f8c;
+}
+
+.btn-senha:hover {
+    background: #c7c3e6;
+}
