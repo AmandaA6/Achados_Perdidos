@@ -42,7 +42,16 @@ def login():
 
     return render_template("usuario/login.html")
 
+@usuario_bp.route('/perfil')
+def perfil():
+    if 'usuario_id' not in session:
+        return redirect(url_for('usuario.login'))
+    with SessionLocal() as db:
+        usuario = db.query(Usuario).get(session['usuario_id'])
+    return render_template('perfil.html', usuario=usuario)
+
 @usuario_bp.route("/logout")
 def logout():
     session.clear()
     return redirect(url_for("index"))
+
