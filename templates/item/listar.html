@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itens Achados e Perdidos</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{{ url_for('static', filename='listar.css') }}">
+{% endblock %}
+
+{% block conteudo %}
+<div class="container">
     <h1>Itens Achados e Perdidos</h1>
 
-    <div>
-        <a href="{{ url_for('item.listar') }}">Todos</a> |
-        <a href="{{ url_for('item.pendentes') }}">Pendentes</a> |
+    <div class="filtros">
+        <a href="{{ url_for('item.listar') }}">Todos</a>
+        <a href="{{ url_for('item.pendentes') }}">Pendentes</a>
         <a href="{{ url_for('item.encontrados') }}">Encontrados</a>
     </div>
 
-    <br>
-    <a href="{{ url_for('item.novo') }}">Cadastrar Novo Item</a>
-    <br><br>
+    <a class="btn-add" href="{{ url_for('item.novo') }}">Cadastrar Novo Item</a>
 
-    <table border="1" cellpadding="8">
+    <table>
         <thead>
             <tr>
                 <th>Nome</th>
@@ -36,12 +34,12 @@
                 <td>{{ i.nome }}</td>
                 <td>{{ i.descricao or '-' }}</td>
                 <td>{{ i.local }}</td>
-                <td>{{ i.data_perdido }}</td>
+                <td>{{ i.data.strftime("%d/%m/%Y") }}</td>
                 <td>
                     {% if i.status == 'pendente' %}
-                        <span style="color: orange;">Pendente</span>
+                        <span class="status-pendente">Pendente</span>
                     {% else %}
-                        <span style="color: green;">Encontrado</span>
+                        <span class="status-encontrado">Encontrado</span>
                     {% endif %}
                 </td>
                 <td>
@@ -65,10 +63,10 @@
             </tr>
             {% else %}
             <tr>
-                <td colspan="7" style="text-align: center;">Nenhum item encontrado</td>
+                <td colspan="7" style="text-align:center;">Nenhum item encontrado</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+</div>
+{% endblock %}
