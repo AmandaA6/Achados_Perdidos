@@ -4,25 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
-    <title>Página inicial</title>
+    <title>Página Inicial</title>
 </head>
 <body>
-    <h1>🌿 Bem-vinda ao Plantaê</h1>
-    <p>Seu cantinho verde começa aqui. Explore, cultive e se encante com nossas plantas!</p>
+    <h1>Bem-vindo ao Achados e Perdidos</h1>
+    <p>Encontre ou registre objetos perdidos de forma rápida e fácil!</p>
 
     <nav>
         {% if 'usuario_id' not in session %}
             <a href="{{ url_for('usuario.cadastro') }}">Criar Conta</a>
             <a href="{{ url_for('usuario.login') }}">Login</a>
         {% else %}
-            <span>Olá, {{ session['usuario_nome'] }}</span>
+            <span class="usuario-nome">Olá, {{ session['usuario_nome'] }}</span>
             <a href="{{ url_for('item.novo') }}">Cadastrar Item</a>
+            <a href="{{ url_for('usuario.logout') }}">Sair</a>
         {% endif %}
     </nav>
 
-    <div class="mural">
-        <img src="{{ url_for('static', filename='img_mural.png') }}" alt="Mural Plantaê">
-    </div>
 </body>
 </html>
-
