@@ -1,28 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
-    <title>Login</title>
-</head>
-<body>
-    <div class="container">
-        <form method="POST">
-            <h1>Login</h1>
+{% extends "base.html" %}
 
-            {% if erro %}
-                <p class="erro">{{ erro }}</p>
-            {% endif %}
+{% block titulo %}Login{% endblock %}
 
-            <input type="email" name="email" placeholder="Email" required><br>
-            <input type="password" name="senha" placeholder="Senha" required><br>
-            <button type="submit">Entrar</button>
+{% block estilos %}
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+{% endblock %}
 
-            <p class="cadastro">Ainda não tem uma conta? 
-                <a href="{{ url_for('usuario.cadastro') }}">Cadastre-se</a>
-            </p>
-        </form>
-    </div>
-</body>
-</html>
+{% block conteudo %}
+<div class="container">
+    <form method="POST">
+        <h1>Login</h1>
+
+        {% if erro %}
+            <p class="erro">{{ erro }}</p>
+        {% endif %}
+
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="senha" placeholder="Senha" required>
+
+        <button type="submit">Entrar</button>
+
+        <p class="cadastro">
+            Ainda não tem uma conta? 
+            <a href="{{ url_for('usuario.cadastro') }}">Cadastre-se</a>
+        </p>
+    </form>
+</div>
+{% endblock %}
