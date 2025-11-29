@@ -1,35 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Novo Item</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block titulo %}Cadastrar Item{% endblock %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{{ url_for('static', filename='item.css') }}">
+{% endblock %}
+
+{% block conteudo %}
+<div class="form-container">
 
     <h1>Cadastrar Novo Item</h1>
 
     <form action="" method="POST" enctype="multipart/form-data">
-        <label>Nome:</label><br>
-        <input type="text" name="nome" required><br><br>
 
-        <label>Descrição:</label><br>
-        <textarea name="descricao"></textarea><br><br>
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
 
-        <label>Local:</label><br>
-        <input type="text" name="local" required><br><br>
+        <label>Descrição:</label>
+        <textarea name="descricao"></textarea>
 
-        <label>Data:</label><br>
-        <input type="date" name="data" required><br><br>
+        <label>Local:</label>
+        <input type="text" name="local" required>
 
-        <label>Foto:</label><br>
-        <input type="file" name="foto"><br><br>
+        <label>Data:</label>
+        <input type="date" name="data" required>
+
+        <label>Foto:</label>
+        <input type="file" name="foto">
 
         <button type="submit">Salvar</button>
     </form>
 
-    <br>
-    <a href="{{ url_for('item.listar') }}">Voltar para itens</a>
+    <a class="voltar" href="{{ url_for('item.listar') }}">Voltar para itens</a>
 
-</body>
-</html>
+</div>
+{% endblock %}
