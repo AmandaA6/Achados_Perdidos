@@ -1,32 +1,27 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    background: #f7f7f7;
+    background: #f8f9fa;
     color: #333;
     text-align: center;
     padding: 50px 20px;
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #4a3f8c;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 p {
     font-size: 1.1rem;
     margin-bottom: 30px;
+    color: #666;
 }
 
 nav {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 25px;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 nav a {
@@ -34,10 +29,8 @@ nav a {
     padding: 10px 20px;
     background: #4a3f8c;
     color: white;
-    border-radius: 8px;
-    transition: 0.3s;
-    font-size: 1rem;
-    font-weight: bold;
+    border-radius: 6px;
+    font-weight: 600;
 }
 
 nav a:hover {
@@ -45,8 +38,11 @@ nav a:hover {
 }
 
 .usuario-nome {
-    font-weight: bold;
-    margin-right: 10px;
+    font-weight: 600;
     color: #4a3f8c;
     font-size: 1.1rem;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #ddd;
 }
