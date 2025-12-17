@@ -2,49 +2,65 @@
     background: white;
     max-width: 550px;
     margin: 40px auto;
-    padding: 35px;
+    padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
 .form-container h1 {
     text-align: center;
     color: #4a3f8c;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.form-container h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #4a3f8c, #6d5fd3);
+    border-radius: 2px;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 label {
-    font-weight: bold;
-    margin-bottom: 6px;
+    font-weight: 600;
     color: #333;
+    margin-bottom: 5px;
+    display: block;
 }
 
 input[type="text"],
 input[type="date"],
 input[type="file"],
 textarea {
+    width: 100%;
     padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
     font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 18px;
-}
-
-textarea {
-    height: 110px;
-    resize: vertical;
 }
 
 input:focus,
 textarea:focus {
     border-color: #4a3f8c;
-    box-shadow: 0 0 6px rgba(74, 63, 140, 0.3);
     outline: none;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
 }
 
 button {
@@ -52,9 +68,11 @@ button {
     background: #4a3f8c;
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 button:hover {
@@ -64,13 +82,13 @@ button:hover {
 .voltar {
     display: block;
     text-align: center;
-    margin-top: 25px;
-    font-size: 1rem;
+    margin-top: 20px;
     color: #4a3f8c;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .voltar:hover {
+    color: #352e66;
     text-decoration: underline;
 }
