@@ -1,77 +1,119 @@
 .container {
-    background: white;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
     max-width: 420px;
     margin: 40px auto;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 40px 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(74, 63, 140, 0.15);
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .container h1 {
     color: #4a3f8c;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-size: 1.9rem;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.container h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #4a3f8c, #6d5fd3);
+    border-radius: 2px;
 }
 
 .erro {
-    color: red;
-    margin-bottom: 15px;
+    color: #e74c3c;
+    margin-bottom: 18px;
     font-weight: bold;
+    padding: 10px 15px;
+    background: #ffeaea;
+    border-radius: 8px;
+    border-left: 4px solid #e74c3c;
+    text-align: left;
+    animation: shake 0.5s ease;
 }
 
 form {
     display: flex;
     flex-direction: column;
     text-align: left;
-}
-
-label {
-    font-weight: bold;
-    margin-top: 12px;
-    margin-bottom: 5px;
-    color: #333;
+    gap: 15px;
 }
 
 input {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e1e1e1;
+    border-radius: 12px;
     font-size: 1rem;
+    transition: all 0.3s ease;
     outline: none;
+    background: #fcfcfc;
+    font-family: inherit;
 }
 
-input:focus {
-    border-color: #4a3f8c;
-    box-shadow: 0 0 6px rgba(74, 63, 140, 0.4);
+input::placeholder {
+    color: #66666690;
 }
 
 button {
-    margin-top: 25px;
-    padding: 12px;
-    background: #4a3f8c;
+    margin-top: 30px;
+    padding: 15px;
+    background: linear-gradient(135deg, #4a3f8c, #5a4ca0);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 1.1rem;
-    font-weight: bold;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 button:hover {
-    background: #352e66;
+    background: linear-gradient(135deg, #352e66, #4a3f8c);
 }
 
 .container p {
-    margin-top: 18px;
+    margin-top: 25px;
     font-size: 0.95rem;
+    color: #666;
 }
 
 .container a {
     color: #4a3f8c;
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: none;
+    position: relative;
+    padding: 2px 4px;
+    transition: all 0.3s ease;
+}
+
+.container a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #4a3f8c;
+    transition: width 0.3s ease;
 }
 
 .container a:hover {
-    text-decoration: underline;
+    color: #352e66;
+}
+
+.container a:hover::after {
+    width: 100%;
 }
