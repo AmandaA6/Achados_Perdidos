@@ -1,20 +1,27 @@
+body {
+    background: #f8f9fa;
+}
+
 .container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 40px auto;
-    background: #fff;
-    padding: 25px;
+    background: white;
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 25px;
+    color: #4a3f8c;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
 }
 
 .info-item p {
-    font-size: 16px;
-    margin: 5px 0;
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #333;
 }
 
 .form-encontrado {
@@ -26,40 +33,52 @@ h1 {
 }
 
 label {
-    font-weight: bold;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
 }
 
 input[type="text"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #aaa;
+    border: 1px solid #ddd;
     border-radius: 6px;
-    font-size: 15px;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-color: #4a3f8c;
+    outline: none;
 }
 
 .btn-confirmar {
     width: 100%;
     padding: 12px;
-    background: #28a745;
-    border: none;
-    font-size: 16px;
+    background: #4a3f8c;
     color: white;
-    border-radius: 8px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
     margin-top: 10px;
 }
 
 .btn-confirmar:hover {
-    background: #218838;
+    background: #352e66;
 }
 
 .btn-cancelar {
     display: block;
     text-align: center;
     margin-top: 15px;
-    color: #555;
+    color: #666;
     text-decoration: none;
+    font-weight: 600;
 }
 
 .btn-cancelar:hover {
+    color: #333;
     text-decoration: underline;
 }
